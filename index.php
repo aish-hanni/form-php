@@ -9,6 +9,7 @@
   <body>
     <?php include('partial/nav.php'); ?>
 
+        
     <div class="container">
 
     <div class="d-flex justify-content-between py-3">
@@ -25,29 +26,39 @@
             <thead>
                 <tr>
                 <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">ISBN</th>
+                <th scope="col">action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                </tr>
-                <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                </tr>
-                <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-                </tr>
+                <?php  include('connect.php');?>
+
+                <?php  
+                    $sql = "Select * from books order by id desc";
+
+                    $result =  $conn->query($sql);  
+                ?>
+
+                <?php  if ($result->num_rows > 0) {  ?>
+
+                    <?php  while($row = $result->fetch_assoc()) { ?>    
+                        <tr>
+                            <th scope="row"><?php echo $row['id']; ?></th>
+                            <td><?php echo $row['title']; ?></td>
+                            <td><?php echo $row['author']; ?></td>
+                            <td><?php echo $row['isbn']; ?></td>
+                            <td>
+                                <a class="btn-sm btn" href="delete.php?id=<?php echo $row['id'];?>">delete</a>
+                            </td>
+                            </tr>
+                        <tr>
+                    <?php } ?>  
+                    
+                    
+                <?php } ?>
+            
             </tbody>
             </table>
         </div>

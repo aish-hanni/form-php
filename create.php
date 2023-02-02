@@ -19,7 +19,9 @@
     </div>
 
         <div class="card mt-3 p-4">
+
             <form method="post">
+
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Title</label>
                     <input type="text" name="title" class="form-control" id="exampleFormControlInput1" placeholder="Book Name...">
@@ -43,23 +45,36 @@
                 <div>
                     <button type="submit" class="btn btn-primary">Save</button>
                 </div>
+
             </form>
+            
 
             <?php 
-             
-              include('connect.php');
-             
-             
-              $title = $_POST['title'];
-              $author = $_POST['author'];
-              $isbn = $_POST['isbn'];
-              $details = $_POST['details'];
 
-              $sql = "INSERT INTO books (title, author, isbn,details)
-                      VALUES ('".$title."', '".$author."',  '".$isbn."', '".$details."')";
+
+        
+
+              include('connect.php');
+
+              if(isset($_POST['title']) && isset($_POST['author']) &&  isset($_POST['isbn'])){
+
+                  $title = $_POST['title'];
+                  $author = $_POST['author'];
+                  $isbn = $_POST['isbn'];
+                  $details = $_POST['details'];
+
+                  $sql = "INSERT INTO books (title, author, isbn,details)
+                          VALUES ('".$title."', '".$author."',  '".$isbn."', '".$details."')";
+
             
-          
-              $conn->query($sql);   
+                  $conn->query($sql);  
+                  
+                  //bonus
+                  include('sendMessage.php');
+
+                  header("Location: http://form-php.test/index.php");
+
+              } 
             
             ?>
         </div>
