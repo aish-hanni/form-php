@@ -4,10 +4,10 @@ $id = $_GET['id'];
 
 $sql = "delete from books where id = ".$id;
 
-include('connect.php');
+include('../connect.php');
 
 $conn->query($sql);  
 
-header("Location: http://form-php.test/index.php");
+header("Location: http://localhost/form-php/books/index.php");
 
 ?>

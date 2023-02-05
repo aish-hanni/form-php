@@ -4,7 +4,7 @@
  $host = "localhost";
  $username = "root";
  $password = "";
- $dbname = "phpform";
+ $dbname = "library";
  
  // Create connection
  $conn = new mysqli($host, $username, $password, $dbname);

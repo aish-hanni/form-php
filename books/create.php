@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   </head>
   <body>
-    <?php include('partial/nav.php'); ?>
+    <?php include('../partial/nav.php'); ?>
 
     <div class="container">
 
@@ -54,7 +54,7 @@
 
         
 
-              include('connect.php');
+              include('../connect.php');
 
               if(isset($_POST['title']) && isset($_POST['author']) &&  isset($_POST['isbn'])){
 
@@ -70,9 +70,9 @@
                   $conn->query($sql);  
                   
                   //bonus
-                  include('sendMessage.php');
+                  //include('sendMessage.php');
 
-                  header("Location: http://form-php.test/index.php");
+                  header("Location: http://localhost/form-php/books/index.php");
 
               } 
             
